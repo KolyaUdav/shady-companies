@@ -12,8 +12,11 @@ docker-compose.yml
 /wp-content/backups/
 /wp-content/*.log
 
-/wp-content/themes/*
-/wp-content/plugins/*
+/wp-content/themes/twenty*
+/wp-content/themes/index.php
+/wp-content/plugins/akismet
+/wp-content/plugins/hello.php
+/wp-content/plugins/index.php
 
 .DS_Store
 Thumbs.db
