@@ -1,0 +1,17 @@
+{
+    "name": "kolya-udav/shady-companies",
+    "description": "ООП Реестр недобросовестных компаний",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Shady\\Companies\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kolya_udav"
+        }
+    ],
+    "require": {}
+}

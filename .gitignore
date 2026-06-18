@@ -1,6 +1,9 @@
 .env
 docker-compose.yml
 
+/wp-admin/*
+
+
 !/wp-content/
 
 /wp-content/*
@@ -15,10 +18,24 @@ docker-compose.yml
 /wp-content/themes/twenty*
 /wp-content/themes/index.php
 /wp-content/plugins/akismet
+/wp-content/plugins/advanced-custom-fields
 /wp-content/plugins/hello.php
 /wp-content/plugins/index.php
 
+/wp-content/plugins/shady-companies/vendor
+
+/wp-config.php
+
 .DS_Store
 Thumbs.db
-.idea/
-.vscode/
+.idea
+.vscode
+.htaccess
+index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-docker.php
+wp-config-sample.php
