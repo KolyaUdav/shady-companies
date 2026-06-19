@@ -22,8 +22,8 @@ class Data
 
         foreach ($rawTags as $rTag) {
             $allTags[] = [
-                'slug' => esc_attr($rTag->slug),
-                'name' => esc_html($rTag->name),
+                'slug' => $rTag->slug,
+                'name' => $rTag->name,
                 'is_selected' => selected($selectedTagValue, $rTag->slug, false),
             ];
         }
@@ -39,21 +39,24 @@ class Data
             return [];
         }
 
-        $rawPosts = $query->posts;
         $allPosts = [];
 
-        foreach ($rawPosts as $rPost) {
-            $logo = get_field('company_logo', $rPost->ID);
-            $cons = get_field('company_cons', $rPost->ID);
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            $logo = get_field('company_logo');
+            $cons = get_field('company_cons');
 
             $allPosts[] = [
-                'title' => esc_html($rPost->post_title),
-                'content' => $rPost->post_content,
-                'logo' => esc_url($logo),
-                'cons' => esc_html($cons),
-                'excerpt' => esc_html($rPost->post_excerpt),
+                'title' => get_the_title(),
+                'content' => apply_filters('the_content', get_the_content()),
+                'logo' => $logo,
+                'cons' => $cons,
+                'excerpt' => get_the_excerpt(),
             ];
         }
+
+        wp_reset_postdata();
 
         return $allPosts;
     }

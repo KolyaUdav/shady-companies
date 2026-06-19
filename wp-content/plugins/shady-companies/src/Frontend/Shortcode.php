@@ -3,6 +3,7 @@
 namespace Shady\Companies\Frontend;
 
 use Shady\Companies\Core\Data;
+use Shady\Companies\Core\Utils;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -18,15 +19,16 @@ class Shortcode
     public function render(): string|false
     {
         $searchValue = !empty($_GET['c_search']) ? sanitize_text_field(wp_unslash($_GET['c_search'])) : '';
-        $searchValue = esc_attr($searchValue);
         $tagValue = !empty($_GET['c_tag']) ? sanitize_title(wp_unslash($_GET['c_tag'])) : '';
+
+        $resetUrl = Utils::getResetUrl();
 
         $companiesGridHtml = $this->renderCompaniesGrid($searchValue, $tagValue);
         $tagsSelectHtml = $this->renderTagsSelect($tagValue);
 
         ob_start();
 
-        require_once plugin_dir_path(__FILE__) . '../../templates/registry-view.php';
+        require plugin_dir_path(__FILE__) . '../../templates/registry-view.php';
 
         return ob_get_clean();
     }
@@ -37,7 +39,7 @@ class Shortcode
 
         ob_start();
 
-        require_once plugin_dir_path(__FILE__) . '../../templates/tags-filter-view.php';
+        require plugin_dir_path(__FILE__) . '../../templates/tags-filter-view.php';
 
         return ob_get_clean();
     }
@@ -48,7 +50,7 @@ class Shortcode
 
         ob_start();
 
-        require_once plugin_dir_path(__FILE__) . '../../templates/companies-grid-view.php';
+        require plugin_dir_path(__FILE__) . '../../templates/companies-grid-view.php';
 
         return ob_get_clean();
     }

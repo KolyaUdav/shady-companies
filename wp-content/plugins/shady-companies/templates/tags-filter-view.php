@@ -8,7 +8,7 @@
     <option value="">Все теги</option>
     
     <?php foreach ($allTags as $tag): ?> 
-        <option value="<?php echo $tag['slug']  ?>" <?php echo $tag['is_selected'] ?>><?php echo $tag['name'] ?></option>;
+        <option value="<?php echo esc_attr($tag['slug']); ?>" <?php echo $tag['is_selected'] ?>><?php echo esc_html($tag['name']); ?></option>;
     
     <?php endforeach; ?>
 </select>
